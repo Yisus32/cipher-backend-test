@@ -15,15 +15,15 @@ Siga los pasos a continuación para instalar este proyecto localmente.
    ```bash
    composer install
    ```
-3.  **Migrar la base de datos + cargar datos de prueba**
+3. **Migrar la base de datos + cargar datos de prueba**
    ```bash
    php artisan migrate --seed
    ```
-4.  **Publicar archivo de configuración de la documentación**
+4. **Publicar archivo de configuración de la documentación**
    ```bash
    php artisan vendor:publish --tag=scribe-config
    ```
-5.  **Desplegar la documentación**
+5. **Desplegar la documentación**
    ```bash
    php artisan scribe:generate
    ```
