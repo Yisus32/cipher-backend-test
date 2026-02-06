@@ -26,9 +26,9 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'sometimes|string',
-            'price' => 'sometimes|numeric',
-            'tax_cost' => 'sometimes|numeric',
-            'manufacturing_cost' => 'sometimes|numeric',
+            'price' => 'required|numeric',
+            'tax_cost' => 'required|numeric',
+            'manufacturing_cost' => 'required|numeric',
             'currency_id' => 'required|integer|exists:currencies,id'
         ];
     }
