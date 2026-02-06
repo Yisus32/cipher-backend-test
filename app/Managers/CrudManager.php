@@ -73,7 +73,7 @@ class CrudManager {
         try {
             DB::beginTransaction();
 
-            $model::query()->update(
+            $model->update(
                 is_array($request) ? $request : $request->all()
             );
 

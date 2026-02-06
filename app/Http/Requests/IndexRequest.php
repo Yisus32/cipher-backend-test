@@ -24,7 +24,8 @@ class IndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'paginate' => 'sometimes|numeric'
+            'paginator' => 'sometimes|numeric',
+            'per_page' => 'sometimes|numeric',
         ];
     }
 
