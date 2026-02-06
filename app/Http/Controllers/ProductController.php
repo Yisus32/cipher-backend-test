@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\IndexRequest;
 use App\Http\Requests\PriceProductRequest;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\PriceListResource;
 use App\Http\Resources\ProductResource;
 use App\Managers\CrudManager;
 use App\Models\PricesProduct;
-use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -16,10 +16,10 @@ class ProductController extends Controller
     /**
      * Muestra una lista de productos.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\IndexRequest $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(Request $request)
+    public function index(IndexRequest $request)
     {
         $products = CrudManager::retrieve(
             $request, 
@@ -115,11 +115,11 @@ class ProductController extends Controller
     /**
      * Obtiene todos los precios del producto especificado.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\IndexRequest $request
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function getProductPrices(Request $request, Product $product) {
+    public function getProductPrices(IndexRequest $request, Product $product) {
         $list = CrudManager::retrieve(
             $request, 
             Product::class, 

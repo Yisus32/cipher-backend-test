@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CurrencyRequest;
+use App\Http\Requests\IndexRequest;
 use App\Managers\CrudManager;
 use App\Models\Currency;
-use Illuminate\Http\Request;
 use App\Http\Resources\CurrencyResource;
 
 class CurrencyController extends Controller
@@ -13,31 +13,10 @@ class CurrencyController extends Controller
     /**
      * Muestra una lista de todas las monedas.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\IndexRequest; $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     *
-     * ## Ejemplo de uso:
-     * GET /api/currencies
-     *
-     * ## Respuesta:
-     * {
-     *    "data": [
-     *      {
-     *        "id": 1,
-     *        "name": "Dólar estadounidense",
-     *        "symbol": "USD",
-     *        "exchange_rate": 1.00
-     *      },
-     *      {
-     *        "id": 2,
-     *        "name": "Euro",
-     *        "symbol": "EUR",
-     *        "exchange_rate": 0.92
-     *      }
-     *    ]
-     * }
      */
-    public function index(Request $request)
+    public function index(IndexRequest $request)
     { 
         $currencies = CrudManager::retrieve(
             $request, 
@@ -52,21 +31,6 @@ class CurrencyController extends Controller
      *
      * @param \App\Http\Requests\CurrencyRequest $request
      * @return \Illuminate\Http\JsonResponse|array
-     *
-     * ## Ejemplo de payload:
-     * {
-     *    "name": "Peso Mexicano",
-     *    "symbol": "MXN",
-     *    "exchange_rate": 16.80
-     * }
-     *
-     * ## Respuesta:
-     * {
-     *    "id": 3,
-     *    "name": "Peso Mexicano",
-     *    "symbol": "MXN",
-     *    "exchange_rate": 16.8
-     * }
      */
     public function store(CurrencyRequest $request)
     {
@@ -83,19 +47,6 @@ class CurrencyController extends Controller
      *
      * @param \App\Models\Currency $currency
      * @return \App\Http\Resources\CurrencyResource
-     *
-     * ## Ejemplo de uso:
-     * GET /api/currencies/1
-     *
-     * ## Respuesta:
-     * {
-     *    "data": {
-     *       "id": 1,
-     *       "name": "Dólar estadounidense",
-     *       "symbol": "USD",
-     *       "exchange_rate": 1.00
-     *    }
-     * }
      */
     public function show(Currency $currency)
     {
@@ -108,23 +59,6 @@ class CurrencyController extends Controller
      * @param \App\Http\Requests\CurrencyRequest $request
      * @param \App\Models\Currency $currency
      * @return \App\Http\Resources\CurrencyResource|array
-     *
-     * ## Ejemplo de payload:
-     * {
-     *    "name": "Euro",
-     *    "symbol": "EUR",
-     *    "exchange_rate": 0.95
-     * }
-     *
-     * ## Respuesta:
-     * {
-     *    "data": {
-     *       "id": 2,
-     *       "name": "Euro",
-     *       "symbol": "EUR",
-     *       "exchange_rate": 0.95
-     *    }
-     * }
      */
     public function update(CurrencyRequest $request, Currency $currency)
     {
@@ -147,14 +81,6 @@ class CurrencyController extends Controller
      *
      * @param \App\Models\Currency $currency
      * @return \Illuminate\Http\JsonResponse|array
-     *
-     * ## Ejemplo de uso:
-     * DELETE /api/currencies/2
-     *
-     * ## Respuesta:
-     * {
-     *    "message": "Recurso eliminado correctamente."
-     * }
      */
     public function destroy(Currency $currency)
     {
